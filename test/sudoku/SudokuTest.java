@@ -1,19 +1,26 @@
 package sudoku;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.TestFactory;
+
+import java.util.List;
 
 import static java.lang.Integer.parseInt;
+import static java.util.Arrays.asList;
 import static matchers.GridMatcher.gridMatches;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class SudokuTest {
 
     private final Sudoku sudoku = new Sudoku();
 
-    @Test
-    public void test() {
-       sudokuTest("1 2",  "1 2",
-                  "2 1",  "2 1");
+    @TestFactory
+    List<DynamicTest> sudokuTests() {
+        return asList(
+                dynamicTest("test", () -> sudokuTest("1 2",  "1 2",
+                                                     "2 1",  "2 1"))
+        );
     }
 
     private void sudokuTest(String... rows) {
