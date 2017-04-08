@@ -59,7 +59,10 @@ public class SudokuTest {
 
                 dynamicTest("Zero right column", () -> sudokuTest(
                         "1 0",  "1 2",
-                        "2 0",  "2 1"))
+                        "2 0",  "2 1")),
+                dynamicTest("Zero right column 2", () -> sudokuTest(
+                        "2 0",  "2 1",
+                        "1 0",  "1 2"))
         );
     }
 
