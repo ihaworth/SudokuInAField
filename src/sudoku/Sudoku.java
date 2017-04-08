@@ -28,7 +28,11 @@ public class Sudoku {
         }
 
         if (puzzle[1][1] == 0) {
-            puzzle[1][1] = 1;
+            if (puzzle[0][1] == 2)
+                puzzle[1][1] = 1;
+
+            if (puzzle[0][1] == 1)
+                puzzle[1][1] = 2;
         }
 
         return puzzle;
