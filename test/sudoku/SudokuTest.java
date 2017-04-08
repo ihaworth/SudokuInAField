@@ -66,7 +66,10 @@ public class SudokuTest {
 
                 dynamicTest("Three zeros plus bottom left", () -> sudokuTest(
                         "0 0",  "1 2",
-                        "2 0",  "2 1"))
+                        "2 0",  "2 1")),
+                dynamicTest("Three zeros plus bottom left 2", () -> sudokuTest(
+                        "0 0",  "2 1",
+                        "1 0",  "1 2"))
         );
     }
 
