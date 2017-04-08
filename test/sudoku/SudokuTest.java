@@ -18,44 +18,48 @@ public class SudokuTest {
     @TestFactory
     List<DynamicTest> sudokuTests() {
         return asList(
-                dynamicTest("test",() -> sudokuTest(
+                dynamicTest("Identity",() -> sudokuTest(
                         "1 2",  "1 2",
                         "2 1",  "2 1")),
 
-                dynamicTest("test", () -> sudokuTest(
+                dynamicTest("Zero Top Left", () -> sudokuTest(
                         "0 2",  "1 2",
                         "2 1",  "2 1")),
-                dynamicTest("test", () -> sudokuTest(
+                dynamicTest("Zero Top Left 2", () -> sudokuTest(
                         "0 1",  "2 1",
                         "1 2",  "1 2")),
 
-                dynamicTest("test", () -> sudokuTest(
+                dynamicTest("Zero top row", () -> sudokuTest(
                         "0 0",  "1 2",
                         "2 1",  "2 1")),
-                dynamicTest("test", () -> sudokuTest(
+                dynamicTest("Zero top row 2", () -> sudokuTest(
                         "0 0",  "2 1",
                         "1 2",  "1 2")),
 
-                dynamicTest("test", () -> sudokuTest(
+                dynamicTest("Three zeros plus bottom right", () -> sudokuTest(
                         "0 0",  "1 2",
                         "0 1",  "2 1")),
-                dynamicTest("test", () -> sudokuTest(
+                dynamicTest("Three zeros plus bottom right 2", () -> sudokuTest(
                         "0 0",  "2 1",
                         "0 2",  "1 2")),
 
-                dynamicTest("test", () -> sudokuTest(
+                dynamicTest("Zero bottom right", () -> sudokuTest(
                         "1 2",  "1 2",
                         "2 0",  "2 1")),
-                dynamicTest("test", () -> sudokuTest(
+                dynamicTest("Zero bottom right 2", () -> sudokuTest(
                         "2 1",  "2 1",
                         "1 0",  "1 2")),
 
-                dynamicTest("test", () -> sudokuTest(
+                dynamicTest("Zero bottom row", () -> sudokuTest(
                         "1 2",  "1 2",
                         "0 0",  "2 1")),
-                dynamicTest("test", () -> sudokuTest(
+                dynamicTest("Zero bottom row 2", () -> sudokuTest(
                         "2 1",  "2 1",
-                        "0 0",  "1 2"))
+                        "0 0",  "1 2")),
+
+                dynamicTest("Zero right column", () -> sudokuTest(
+                        "1 0",  "1 2",
+                        "2 0",  "2 1"))
         );
     }
 
