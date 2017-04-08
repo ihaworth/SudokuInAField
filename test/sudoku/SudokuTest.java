@@ -18,8 +18,12 @@ public class SudokuTest {
     @TestFactory
     List<DynamicTest> sudokuTests() {
         return asList(
-                dynamicTest("test", () -> sudokuTest("1 2",  "1 2",
-                                                     "2 1",  "2 1"))
+                dynamicTest("test",() -> sudokuTest(
+                        "1 2",  "1 2",
+                        "2 1",  "2 1")),
+                dynamicTest("test", () -> sudokuTest(
+                        "0 2",  "1 2",
+                        "2 1",  "2 1"))
         );
     }
 
