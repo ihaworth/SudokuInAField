@@ -26,7 +26,10 @@ public class SudokuTest {
                         "2 1",  "2 1")),
                 dynamicTest("test", () -> sudokuTest(
                         "0 1",  "2 1",
-                        "1 2",  "1 2"))
+                        "1 2",  "1 2")),
+                dynamicTest("test", () -> sudokuTest(
+                        "0 0",  "1 2",
+                        "2 1",  "2 1"))
         );
     }
 
