@@ -48,11 +48,15 @@ public class Sudoku {
         }
 
         if (puzzle[1][1] == 0) {
-            if (puzzle[0][1] == 2)
+            if (puzzle[0][1] == 2) {
                 puzzle[1][1] = 1;
+                return solve(puzzle);
+            }
 
-            if (puzzle[0][1] == 1)
+            if (puzzle[0][1] == 1) {
                 puzzle[1][1] = 2;
+                return solve(puzzle);
+            }
         }
 
         return puzzle;
