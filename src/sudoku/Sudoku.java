@@ -23,6 +23,11 @@ public class Sudoku {
 
             if (puzzle[0][1] == 1)
                 puzzle[0][0] = 2;
+
+            if (puzzle[1][0] == 2) {
+                puzzle[0][0] = 1;
+                return solve(puzzle);
+            }
         }
 
         if (puzzle[1][1] == 0) {
