@@ -9,6 +9,9 @@ public class Sudoku {
 
             if (puzzle[1][1] == 2)
                 puzzle[0][1] = 1;
+
+            if (puzzle[0][0] == 1)
+                puzzle[0][1] = 2;
         }
 
         if (puzzle[0][0] == 0) {
