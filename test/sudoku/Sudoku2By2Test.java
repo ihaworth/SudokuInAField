@@ -11,7 +11,7 @@ import static matchers.GridMatcher.gridMatches;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
-public class SudokuTest {
+public class Sudoku2By2Test {
 
     private final Sudoku sudoku = new Sudoku();
 
