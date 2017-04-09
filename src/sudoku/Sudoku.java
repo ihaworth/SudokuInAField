@@ -3,67 +3,22 @@ package sudoku;
 public class Sudoku {
 
     public int[][] solve(int[][] puzzle) {
-        {
-            int row = 0;
-            int col = 0;
-            if (puzzle[row][col] == 0) {
-                if (puzzle[row][otherCol(col)] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[row][otherCol(col)]);
-                    return solve(puzzle);
+
+        for (int row = 0; row < 2; row++) {
+            for (int col = 0; col < 2; col++) {
+
+                if (puzzle[row][col] == 0) {
+                    if (puzzle[row][otherCol(col)] != 0) {
+                        puzzle[row][col] = otherNumber(puzzle[row][otherCol(col)]);
+                        return solve(puzzle);
+                    }
+
+                    if (puzzle[otherRow(row)][col] != 0) {
+                        puzzle[row][col] = otherNumber(puzzle[otherRow(row)][col]);
+                        return solve(puzzle);
+                    }
                 }
 
-                if (puzzle[otherRow(row)][col] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[otherRow(row)][col]);
-                    return solve(puzzle);
-                }
-            }
-        }
-
-        {
-            int row = 1;
-            int col = 0;
-            if (puzzle[row][col] == 0) {
-                if (puzzle[row][otherCol(col)] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[row][otherCol(col)]);
-                    return solve(puzzle);
-                }
-
-                if (puzzle[otherRow(row)][col] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[otherRow(row)][col]);
-                    return solve(puzzle);
-                }
-            }
-        }
-
-        {
-            int row = 1;
-            int col = 1;
-            if (puzzle[row][col] == 0) {
-                if (puzzle[row][otherCol(col)] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[row][otherCol(col)]);
-                    return solve(puzzle);
-                }
-
-                if (puzzle[otherRow(row)][col] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[otherRow(row)][col]);
-                    return solve(puzzle);
-                }
-            }
-        }
-
-        {
-            int row = 0;
-            int col = 1;
-            if (puzzle[row][col] == 0) {
-                if (puzzle[row][otherCol(col)] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[row][otherCol(col)]);
-                    return solve(puzzle);
-                }
-
-                if (puzzle[otherRow(row)][col] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[otherRow(row)][col]);
-                    return solve(puzzle);
-                }
             }
         }
 
