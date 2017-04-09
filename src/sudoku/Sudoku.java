@@ -7,22 +7,22 @@ public class Sudoku {
             int row = 0;
             int col = 0;
             if (puzzle[row][col] == 0) {
-                if (puzzle[row][1] == 2) {
+                if (puzzle[row][1] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[row][1]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[row][1] == 1) {
+                if (puzzle[row][1] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[row][1]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[1][col] == 2) {
+                if (puzzle[1][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[1][col]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[1][col] == 1) {
+                if (puzzle[1][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[1][col]);
                     return solve(puzzle);
                 }
@@ -33,22 +33,22 @@ public class Sudoku {
             int row = 1;
             int col = 0;
             if (puzzle[row][col] == 0) {
-                if (puzzle[row][1] == 2) {
+                if (puzzle[row][1] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[row][1]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[row][1] == 1) {
+                if (puzzle[row][1] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[row][1]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[0][col] == 2) {
+                if (puzzle[0][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[0][col]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[0][col] == 1) {
+                if (puzzle[0][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[0][col]);
                     return solve(puzzle);
                 }
@@ -59,22 +59,22 @@ public class Sudoku {
             int row = 1;
             int col = 1;
             if (puzzle[row][col] == 0) {
-                if (puzzle[row][0] == 2) {
+                if (puzzle[row][0] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[row][0]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[row][0] == 1) {
+                if (puzzle[row][0] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[row][0]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[0][col] == 2) {
+                if (puzzle[0][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[0][col]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[0][col] == 1) {
+                if (puzzle[0][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[0][col]);
                     return solve(puzzle);
                 }
@@ -85,22 +85,22 @@ public class Sudoku {
             int row = 0;
             int col = 1;
             if (puzzle[row][col] == 0) {
-                if (puzzle[row][0] == 2) {
+                if (puzzle[row][0] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[row][0]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[row][0] == 1) {
+                if (puzzle[row][0] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[row][0]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[1][col] == 2) {
+                if (puzzle[1][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[1][col]);
                     return solve(puzzle);
                 }
 
-                if (puzzle[1][col] == 1) {
+                if (puzzle[1][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[1][col]);
                     return solve(puzzle);
                 }
