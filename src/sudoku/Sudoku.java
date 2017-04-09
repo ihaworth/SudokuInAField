@@ -4,8 +4,8 @@ public class Sudoku {
 
     public int[][] solve(int[][] puzzle) {
 
-        for (int row = 0; row < 2; row++) {
-            for (int col = 0; col < 2; col++) {
+        for (int row = 0; row < puzzle.length; row++) {
+            for (int col = 0; col < puzzle.length; col++) {
 
                 if (puzzle[row][col] == 0) {
                     if (puzzle[row][otherCol(col)] != 0) {
