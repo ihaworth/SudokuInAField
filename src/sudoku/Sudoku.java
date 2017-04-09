@@ -12,16 +12,6 @@ public class Sudoku {
                     return solve(puzzle);
                 }
 
-                if (puzzle[row][1] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[row][1]);
-                    return solve(puzzle);
-                }
-
-                if (puzzle[1][col] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[1][col]);
-                    return solve(puzzle);
-                }
-
                 if (puzzle[1][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[1][col]);
                     return solve(puzzle);
@@ -38,16 +28,6 @@ public class Sudoku {
                     return solve(puzzle);
                 }
 
-                if (puzzle[row][1] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[row][1]);
-                    return solve(puzzle);
-                }
-
-                if (puzzle[0][col] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[0][col]);
-                    return solve(puzzle);
-                }
-
                 if (puzzle[0][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[0][col]);
                     return solve(puzzle);
@@ -64,16 +44,6 @@ public class Sudoku {
                     return solve(puzzle);
                 }
 
-                if (puzzle[row][0] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[row][0]);
-                    return solve(puzzle);
-                }
-
-                if (puzzle[0][col] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[0][col]);
-                    return solve(puzzle);
-                }
-
                 if (puzzle[0][col] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[0][col]);
                     return solve(puzzle);
@@ -87,16 +57,6 @@ public class Sudoku {
             if (puzzle[row][col] == 0) {
                 if (puzzle[row][0] != 0) {
                     puzzle[row][col] = otherNumber(puzzle[row][0]);
-                    return solve(puzzle);
-                }
-
-                if (puzzle[row][0] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[row][0]);
-                    return solve(puzzle);
-                }
-
-                if (puzzle[1][col] != 0) {
-                    puzzle[row][col] = otherNumber(puzzle[1][col]);
                     return solve(puzzle);
                 }
 
