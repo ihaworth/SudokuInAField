@@ -22,68 +22,34 @@ public class SudokuTest {
                         "1 2",  "1 2",
                         "2 1",  "2 1")),
 
-                dynamicTest("Zero Top Left", () -> sudokuTest(
-                        "0 2",  "1 2",
-                        "2 1",  "2 1")),
-                dynamicTest("Zero Top Left 2", () -> sudokuTest(
-                        "0 1",  "2 1",
-                        "1 2",  "1 2")),
 
-                dynamicTest("Zero top row", () -> sudokuTest(
-                        "0 0",  "1 2",
-                        "2 1",  "2 1")),
-                dynamicTest("Zero top row 2", () -> sudokuTest(
-                        "0 0",  "2 1",
-                        "1 2",  "1 2")),
-
-                dynamicTest("Three zeros plus bottom right", () -> sudokuTest(
-                        "0 0",  "1 2",
-                        "0 1",  "2 1")),
-                dynamicTest("Three zeros plus bottom right 2", () -> sudokuTest(
-                        "0 0",  "2 1",
-                        "0 2",  "1 2")),
-
-                dynamicTest("Zero bottom right", () -> sudokuTest(
-                        "1 2",  "1 2",
-                        "2 0",  "2 1")),
-                dynamicTest("Zero bottom right 2", () -> sudokuTest(
-                        "2 1",  "2 1",
-                        "1 0",  "1 2")),
-
-                dynamicTest("Zero bottom row", () -> sudokuTest(
-                        "1 2",  "1 2",
-                        "0 0",  "2 1")),
-                dynamicTest("Zero bottom row 2", () -> sudokuTest(
-                        "2 1",  "2 1",
-                        "0 0",  "1 2")),
-
-                dynamicTest("Zero right column", () -> sudokuTest(
-                        "1 0",  "1 2",
-                        "2 0",  "2 1")),
-                dynamicTest("Zero right column 2", () -> sudokuTest(
-                        "2 0",  "2 1",
-                        "1 0",  "1 2")),
-
-                dynamicTest("Three zeros plus bottom left", () -> sudokuTest(
-                        "0 0",  "1 2",
-                        "2 0",  "2 1")),
-                dynamicTest("Three zeros plus bottom left 2", () -> sudokuTest(
-                        "0 0",  "2 1",
-                        "1 0",  "1 2")),
-
-                dynamicTest("Three zeros plus top left", () -> sudokuTest(
+                dynamicTest("Three zeros plus top left 1", () -> sudokuTest(
                         "1 0",  "1 2",
                         "0 0",  "2 1")),
                 dynamicTest("Three zeros plus top left 2", () -> sudokuTest(
                         "2 0",  "2 1",
                         "0 0",  "1 2")),
 
-                dynamicTest("Three zeros plus top right", () -> sudokuTest(
+                dynamicTest("Three zeros plus bottom left 1", () -> sudokuTest(
+                        "0 0",  "2 1",
+                        "1 0",  "1 2")),
+                dynamicTest("Three zeros plus bottom left 2", () -> sudokuTest(
+                        "0 0",  "1 2",
+                        "2 0",  "2 1")),
+
+                dynamicTest("Three zeros plus top right 1", () -> sudokuTest(
+                        "0 1",  "2 1",
+                        "0 0",  "1 2")),
+                dynamicTest("Three zeros plus top right 2", () -> sudokuTest(
                         "0 2",  "1 2",
                         "0 0",  "2 1")),
-                dynamicTest("Three zeros plus top right 2", () -> sudokuTest(
-                        "0 1",  "2 1",
-                        "0 0",  "1 2"))
+
+                dynamicTest("Three zeros plus bottom right 1", () -> sudokuTest(
+                        "0 0",  "1 2",
+                        "0 1",  "2 1")),
+                dynamicTest("Three zeros plus bottom right 2", () -> sudokuTest(
+                        "0 0",  "2 1",
+                        "0 2",  "1 2"))
         );
     }
 
