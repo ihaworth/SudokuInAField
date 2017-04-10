@@ -21,13 +21,17 @@ public class Sudoku3By3Test extends SudokuTest {
                 dynamicTest("Missing a 2 from an inner 2x2",() -> sudokuTest(
                         "1 0 3",  "1 2 3",
                         "2 3 1",  "2 3 1",
-                        "3 1 2",  "3 1 2"))
-                ,
+                        "3 1 2",  "3 1 2")),
 
                 dynamicTest("Missing a 3",() -> sudokuTest(
                         "1 2 0",  "1 2 3",
                         "2 3 1",  "2 3 1",
-                        "3 1 2",  "3 1 2"))
+                        "3 1 2",  "3 1 2")),
+
+                dynamicTest("Missing a 3",() -> sudokuTest(
+                        "1 0 0",  "1 2 3",
+                        "0 3 0",  "2 3 1",
+                        "0 0 0",  "3 1 2"))
         );
     }
 
