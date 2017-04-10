@@ -18,12 +18,7 @@ public class Sudoku {
             for (int col = 0; col < puzzleSize; col++) {
 
                 if (puzzle[row][col] == 0) {
-                    Set<Integer> knownNumbersInCol = knownNumbersInCol(puzzle, col);
-                    Set<Integer> knownNumbersInRow = knownNumbersInRow(puzzle, row);
-
-                    Set<Integer> knownIntersectingNumbers = new HashSet<>();
-                    knownIntersectingNumbers.addAll(knownNumbersInRow);
-                    knownIntersectingNumbers.addAll(knownNumbersInCol);
+                    Set<Integer> knownIntersectingNumbers = knownIntersectingNumbers(puzzle, row, col);
 
                     Set<Integer> possibleNumbers = allPossibleNumbers();
                     if (possibleNumbers.removeAll(knownIntersectingNumbers)) {
@@ -35,6 +30,16 @@ public class Sudoku {
         }
 
         return puzzle;
+    }
+
+    private Set<Integer> knownIntersectingNumbers(int[][] puzzle, int row, int col) {
+        Set<Integer> knownNumbersInRow = knownNumbersInRow(puzzle, row);
+        Set<Integer> knownNumbersInCol = knownNumbersInCol(puzzle, col);
+
+        Set<Integer> knownIntersectingNumbers = new HashSet<>();
+        knownIntersectingNumbers.addAll(knownNumbersInRow);
+        knownIntersectingNumbers.addAll(knownNumbersInCol);
+        return knownIntersectingNumbers;
     }
 
     private Set<Integer> knownNumbersInRow(int[][] puzzle, int row) {
