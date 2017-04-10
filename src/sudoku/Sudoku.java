@@ -1,7 +1,5 @@
 package sudoku;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -21,12 +19,16 @@ public class Sudoku {
                 if (puzzle[row][col] == 0) {
 
                     if (puzzle[row][otherCol(col)] != 0) {
-                        puzzle[row][col] = first(otherNumbers(knownNumbersInRow(puzzle, row)));
+                        Set<Integer> otherNumbers = allPossibleNumbers();
+                        otherNumbers.removeAll(knownNumbersInRow(puzzle, row));
+                        puzzle[row][col] = first(otherNumbers);
                         return solve(puzzle);
                     }
 
                     if (puzzle[otherRow(row)][col] != 0) {
-                        puzzle[row][col] = first(otherNumbers(knownNumbersInCol(puzzle, col)));
+                        Set<Integer> otherNumbers = allPossibleNumbers();
+                        otherNumbers.removeAll(knownNumbersInCol(puzzle, col));
+                        puzzle[row][col] = first(otherNumbers);
                         return solve(puzzle);
                     }
                 }
@@ -60,12 +62,6 @@ public class Sudoku {
 
     private int first(Set<Integer> numbers) {
         return numbers.stream().findFirst().get();
-    }
-
-    private Set<Integer> otherNumbers(Set<Integer> knownNumbers) {
-        Set<Integer> otherNumbers = allPossibleNumbers();
-        otherNumbers.removeAll(knownNumbers);
-        return otherNumbers;
     }
 
     private Set<Integer> allPossibleNumbers() {
