@@ -1,5 +1,6 @@
 package sudoku;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -19,20 +20,15 @@ public class Sudoku {
                 if (puzzle[row][col] == 0) {
                     Set<Integer> knownNumbersInCol = knownNumbersInCol(puzzle, col);
                     Set<Integer> knownNumbersInRow = knownNumbersInRow(puzzle, row);
-                    {
-                        Set<Integer> possibleNumbers = allPossibleNumbers();
-                        if (possibleNumbers.removeAll(knownNumbersInRow)) {
-                            puzzle[row][col] = first(possibleNumbers);
-                            return solve(puzzle);
-                        }
-                    }
 
-                    {
-                        Set<Integer> possibleNumbers = allPossibleNumbers();
-                        if (possibleNumbers.removeAll(knownNumbersInCol)) {
-                            puzzle[row][col] = first(possibleNumbers);
-                            return solve(puzzle);
-                        }
+                    Set<Integer> knownIntersectingNumbers = new HashSet<>();
+                    knownIntersectingNumbers.addAll(knownNumbersInRow);
+                    knownIntersectingNumbers.addAll(knownNumbersInCol);
+
+                    Set<Integer> possibleNumbers = allPossibleNumbers();
+                    if (possibleNumbers.removeAll(knownIntersectingNumbers)) {
+                        puzzle[row][col] = first(possibleNumbers);
+                        return solve(puzzle);
                     }
                 }
             }
