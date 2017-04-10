@@ -56,14 +56,6 @@ public class Sudoku {
                 boxed().collect(toSet());
     }
 
-    private int otherRow(int row) {
-        return (row == 1) ? 0 : 1;
-    }
-
-    private int otherCol(int col) {
-        return (col == 1) ? 0 : 1;
-    }
-
     private int first(Set<Integer> numbers) {
         return numbers.stream().findFirst().get();
     }
