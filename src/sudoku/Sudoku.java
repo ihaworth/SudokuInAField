@@ -17,19 +17,20 @@ public class Sudoku {
             for (int col = 0; col < puzzleSize; col++) {
 
                 if (puzzle[row][col] == 0) {
-
-                    if (puzzle[row][otherCol(col)] != 0) {
+                    {
                         Set<Integer> otherNumbers = allPossibleNumbers();
-                        otherNumbers.removeAll(knownNumbersInRow(puzzle, row));
-                        puzzle[row][col] = first(otherNumbers);
-                        return solve(puzzle);
+                        if (otherNumbers.removeAll(knownNumbersInRow(puzzle, row))) {
+                            puzzle[row][col] = first(otherNumbers);
+                            return solve(puzzle);
+                        }
                     }
 
-                    if (puzzle[otherRow(row)][col] != 0) {
-                        Set<Integer> otherNumbers = allPossibleNumbers();
-                        otherNumbers.removeAll(knownNumbersInCol(puzzle, col));
-                        puzzle[row][col] = first(otherNumbers);
-                        return solve(puzzle);
+                    {
+                        Set<Integer> possibleNumbers = allPossibleNumbers();
+                        if (possibleNumbers.removeAll(knownNumbersInCol(puzzle, col))) {
+                            puzzle[row][col] = first(possibleNumbers);
+                            return solve(puzzle);
+                        }
                     }
                 }
             }
