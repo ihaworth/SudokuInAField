@@ -19,13 +19,14 @@ public class Sudoku {
             for (int col = 0; col < puzzleSize; col++) {
 
                 if (puzzle[row][col] == 0) {
+
                     if (puzzle[row][otherCol(col)] != 0) {
-                        puzzle[row][col] = first(otherNumbers(asSet(puzzle[row][otherCol(col)])));
+                        puzzle[row][col] = first(otherNumbers(knownNumbersInRow(puzzle, row)));
                         return solve(puzzle);
                     }
 
                     if (puzzle[otherRow(row)][col] != 0) {
-                        puzzle[row][col] = first(otherNumbers(asSet(puzzle[otherRow(row)][col])));
+                        puzzle[row][col] = first(otherNumbers(knownNumbersInCol(puzzle, col)));
                         return solve(puzzle);
                     }
                 }
@@ -33,6 +34,20 @@ public class Sudoku {
         }
 
         return puzzle;
+    }
+
+    private Set<Integer> knownNumbersInRow(int[][] puzzle, int row) {
+        return IntStream.range(0, puzzleSize).
+                map(col -> puzzle[row][col]).
+                filter(n -> n != 0).
+                boxed().collect(toSet());
+    }
+
+    private Set<Integer> knownNumbersInCol(int[][] puzzle, int col) {
+        return IntStream.range(0, puzzleSize).
+                map(row -> puzzle[row][col]).
+                filter(n -> n != 0).
+                boxed().collect(toSet());
     }
 
     private int otherRow(int row) {
@@ -51,10 +66,6 @@ public class Sudoku {
         Set<Integer> otherNumbers = allPossibleNumbers();
         otherNumbers.removeAll(knownNumbers);
         return otherNumbers;
-    }
-
-    private Set<Integer> asSet(Integer... i) {
-        return new HashSet<>(Arrays.asList(i));
     }
 
     private Set<Integer> allPossibleNumbers() {
