@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class Sudoku3By3Test extends SudokuTest {
 
+    // Assumption: 3x3 Sudokus don't have any inner squares.
+
     @TestFactory
     List<DynamicTest> sudokuTests() {
         return asList(
