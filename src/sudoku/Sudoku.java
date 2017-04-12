@@ -22,8 +22,10 @@ public class Sudoku {
 
                     Set<Integer> possibleNumbers = allPossibleNumbers();
                     if (possibleNumbers.removeAll(knownIntersectingNumbers)) {
-                        puzzle[row][col] = first(possibleNumbers);
-                        return solve(puzzle);
+                        if (possibleNumbers.size() == 1) {
+                            puzzle[row][col] = first(possibleNumbers);
+                            return solve(puzzle);
+                        }
                     }
                 }
             }
