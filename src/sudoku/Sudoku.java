@@ -65,8 +65,14 @@ public class Sudoku {
 
         int subSquareSize = (int) Math.sqrt(puzzle.length);
 
-        return IntStream.range(0, subSquareSize).
-                flatMap(r -> IntStream.range(0, subSquareSize).
+        int fromRow = (row / subSquareSize) * subSquareSize;
+        int toRow = fromRow + subSquareSize;
+
+        int fromCol = (col / subSquareSize) * subSquareSize;
+        int toCol = fromCol + subSquareSize;
+
+        return IntStream.range(fromRow, toRow).
+                flatMap(r -> IntStream.range(fromCol, toCol).
                         map(c -> puzzle[r][c])).
                 filter(n -> n != 0).
                 boxed().
