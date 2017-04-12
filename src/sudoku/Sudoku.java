@@ -68,6 +68,7 @@ public class Sudoku {
         return IntStream.range(0, subSquareSize).
                 flatMap(r -> IntStream.range(0, subSquareSize).
                         map(c -> puzzle[r][c])).
+                filter(n -> n != 0).
                 boxed().
                 collect(toSet());
     }
