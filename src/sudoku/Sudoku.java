@@ -60,7 +60,16 @@ public class Sudoku {
     }
 
     Set<Integer> knownNumbersInSubSquare(int[][] puzzle, int row, int col) {
-        return new HashSet<>();
+        if (puzzle.length == 2 || puzzle.length == 3)
+            return new HashSet<>();
+
+        int subSquareSize = (int) Math.sqrt(puzzle.length);
+
+        return IntStream.range(0, subSquareSize).
+                flatMap(r -> IntStream.range(0, subSquareSize).
+                        map(c -> puzzle[r][c])).
+                boxed().
+                collect(toSet());
     }
 
     private int first(Set<Integer> numbers) {
