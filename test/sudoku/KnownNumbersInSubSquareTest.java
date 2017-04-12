@@ -55,10 +55,24 @@ public class KnownNumbersInSubSquareTest {
                               {0, 0, 0, 0},
                               {0, 0, 0, 0}};
 
-        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 0, 0), set(3, 2, 1, 4));
-        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 0, 1), set(3, 2, 1, 4));
-        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 1, 0), set(3, 2, 1, 4));
-        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 1, 1), set(3, 2, 1, 4));
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 0, 0), set(1, 2, 3, 4));
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 0, 1), set(1, 2, 3, 4));
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 1, 0), set(1, 2, 3, 4));
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 1, 1), set(1, 2, 3, 4));
+    }
+
+    @Test
+    public void a4x4PuzzleHasATopLeftSubSquareThatMyNotBeComplete() {
+
+        puzzle = new int[][] {{3, 0, 0, 0},
+                              {0, 4, 0, 0},
+                              {0, 0, 0, 0},
+                              {0, 0, 0, 0}};
+
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 0, 0), set(3, 4));
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 0, 1), set(3, 4));
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 1, 0), set(3, 4));
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 1, 1), set(3, 4));
     }
 
     private Set<Integer> set(Integer... ints) {
