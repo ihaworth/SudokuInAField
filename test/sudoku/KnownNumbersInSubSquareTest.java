@@ -2,6 +2,11 @@ package sudoku;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class KnownNumbersInSubSquareTest {
@@ -40,6 +45,24 @@ public class KnownNumbersInSubSquareTest {
         assertTrue(sudoku.knownNumbersInSubSquare(puzzle, 2, 0).isEmpty());
         assertTrue(sudoku.knownNumbersInSubSquare(puzzle, 2, 1).isEmpty());
         assertTrue(sudoku.knownNumbersInSubSquare(puzzle, 2, 2).isEmpty());
+    }
+
+    @Test
+    public void a4x4PuzzleHasATopLeftSubSquare() {
+
+        puzzle = new int[][] {{3, 2, 0, 0},
+                              {1, 4, 0, 0},
+                              {0, 0, 0, 0},
+                              {0, 0, 0, 0}};
+
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 0, 0), set(3, 2, 1, 4));
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 0, 1), set(3, 2, 1, 4));
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 1, 0), set(3, 2, 1, 4));
+        assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 1, 1), set(3, 2, 1, 4));
+    }
+
+    private Set<Integer> set(Integer... ints) {
+        return new HashSet<>(Arrays.asList(ints));
     }
 
 }
