@@ -75,6 +75,20 @@ public class KnownNumbersInSubSquareTest {
         assertEquals(sudoku.knownNumbersInSubSquare(puzzle, 1, 1), set(3, 4));
     }
 
+    @Test
+    public void a4x4PuzzleHasATopLeftSubSquareThatCanBeEmpty() {
+
+        puzzle = new int[][] {{0, 0, 3, 2},
+                              {0, 0, 1, 4},
+                              {0, 0, 0, 0},
+                              {0, 0, 0, 0}};
+
+        assertTrue(sudoku.knownNumbersInSubSquare(puzzle, 0, 0).isEmpty());
+        assertTrue(sudoku.knownNumbersInSubSquare(puzzle, 0, 1).isEmpty());
+        assertTrue(sudoku.knownNumbersInSubSquare(puzzle, 1, 0).isEmpty());
+        assertTrue(sudoku.knownNumbersInSubSquare(puzzle, 1, 1).isEmpty());
+    }
+
     private Set<Integer> set(Integer... ints) {
         return new HashSet<>(Arrays.asList(ints));
     }
