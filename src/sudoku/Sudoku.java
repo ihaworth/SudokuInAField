@@ -59,7 +59,7 @@ public class Sudoku {
                 boxed().collect(toSet());
     }
 
-    private Set<Integer> knownNumbersInSubSquare(int[][] puzzle, int row, int col) {
+    Set<Integer> knownNumbersInSubSquare(int[][] puzzle, int row, int col) {
         return new HashSet<>();
     }
 
