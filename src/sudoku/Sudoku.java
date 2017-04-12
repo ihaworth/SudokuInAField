@@ -35,12 +35,13 @@ public class Sudoku {
     }
 
     private Set<Integer> knownIntersectingNumbers(int[][] puzzle, int row, int col) {
-        Set<Integer> knownNumbersInRow = knownNumbersInRow(puzzle, row);
-        Set<Integer> knownNumbersInCol = knownNumbersInCol(puzzle, col);
 
         Set<Integer> knownIntersectingNumbers = new HashSet<>();
-        knownIntersectingNumbers.addAll(knownNumbersInRow);
-        knownIntersectingNumbers.addAll(knownNumbersInCol);
+
+        knownIntersectingNumbers.addAll(knownNumbersInRow(puzzle, row));
+        knownIntersectingNumbers.addAll(knownNumbersInCol(puzzle, col));
+        knownIntersectingNumbers.addAll(knownNumbersInSubSquare(puzzle, row, col));
+
         return knownIntersectingNumbers;
     }
 
@@ -56,6 +57,10 @@ public class Sudoku {
                 map(row -> puzzle[row][col]).
                 filter(n -> n != 0).
                 boxed().collect(toSet());
+    }
+
+    private Set<Integer> knownNumbersInSubSquare(int[][] puzzle, int row, int col) {
+        return new HashSet<>();
     }
 
     private int first(Set<Integer> numbers) {
