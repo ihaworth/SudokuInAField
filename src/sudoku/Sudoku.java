@@ -18,10 +18,8 @@ public class Sudoku {
             for (int col = 0; col < puzzleSize; col++) {
 
                 if (puzzle[row][col] == 0) {
-                    Set<Integer> knownIntersectingNumbers = knownIntersectingNumbers(puzzle, row, col);
-
                     Set<Integer> possibleNumbers = allPossibleNumbers();
-                    possibleNumbers.removeAll(knownIntersectingNumbers);
+                    possibleNumbers.removeAll(knownIntersectingNumbers(puzzle, row, col));
                     if (possibleNumbers.size() == 1) {
                         puzzle[row][col] = first(possibleNumbers);
                         return solve(puzzle);
