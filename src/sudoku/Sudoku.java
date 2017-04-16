@@ -43,15 +43,19 @@ public class Sudoku {
     }
 
     private Set<Integer> knownNumbersInRow(int[][] puzzle, int row) {
-        return knownNumbers(
-                IntStream.range(0, puzzleSize).
-                map(col -> puzzle[row][col]));
+        return knownNumbers(numbersInRow(puzzle, row));
+    }
+
+    private IntStream numbersInRow(int[][] puzzle, int row) {
+        return IntStream.range(0, puzzleSize).map(col -> puzzle[row][col]);
     }
 
     private Set<Integer> knownNumbersInCol(int[][] puzzle, int col) {
-        return knownNumbers(
-                IntStream.range(0, puzzleSize).
-                map(row -> puzzle[row][col]));
+        return knownNumbers(numbersInCol(puzzle, col));
+    }
+
+    private IntStream numbersInCol(int[][] puzzle, int col) {
+        return IntStream.range(0, puzzleSize).map(row -> puzzle[row][col]);
     }
 
     Set<Integer> knownNumbersInSubSquare(int[][] puzzle, int row, int col) {
