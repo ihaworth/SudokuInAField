@@ -65,11 +65,11 @@ public class Sudoku {
 
         int subSquareSize = (int) Math.sqrt(puzzle.length);
 
-        int fromRow = (row / subSquareSize) * subSquareSize;
-        int toRow = fromRow + subSquareSize;
+        int fromRow = fromSubSquareIndex(row, subSquareSize);
+        int toRow = toSubSquareIndex(subSquareSize, fromRow);
 
-        int fromCol = (col / subSquareSize) * subSquareSize;
-        int toCol = fromCol + subSquareSize;
+        int fromCol = fromSubSquareIndex(col, subSquareSize);
+        int toCol = toSubSquareIndex(subSquareSize, fromCol);
 
         return IntStream.range(fromRow, toRow).
                 flatMap(r -> IntStream.range(fromCol, toCol).
@@ -77,6 +77,14 @@ public class Sudoku {
                 filter(n -> n != 0).
                 boxed().
                 collect(toSet());
+    }
+
+    private int fromSubSquareIndex(int col, int subSquareSize) {
+        return (col / subSquareSize) * subSquareSize;
+    }
+
+    private int toSubSquareIndex(int subSquareSize, int fromCol) {
+        return fromCol + subSquareSize;
     }
 
     private int first(Set<Integer> numbers) {
