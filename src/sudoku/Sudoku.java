@@ -21,11 +21,10 @@ public class Sudoku {
                     Set<Integer> knownIntersectingNumbers = knownIntersectingNumbers(puzzle, row, col);
 
                     Set<Integer> possibleNumbers = allPossibleNumbers();
-                    if (possibleNumbers.removeAll(knownIntersectingNumbers)) {
-                        if (possibleNumbers.size() == 1) {
-                            puzzle[row][col] = first(possibleNumbers);
-                            return solve(puzzle);
-                        }
+                    possibleNumbers.removeAll(knownIntersectingNumbers);
+                    if (possibleNumbers.size() == 1) {
+                        puzzle[row][col] = first(possibleNumbers);
+                        return solve(puzzle);
                     }
                 }
             }
