@@ -43,17 +43,15 @@ public class Sudoku {
     }
 
     private Set<Integer> knownNumbersInRow(int[][] puzzle, int row) {
-        return IntStream.range(0, puzzleSize).
-                map(col -> puzzle[row][col]).
-                filter(n -> n != 0).
-                boxed().collect(toSet());
+        return knownNumbers(
+                IntStream.range(0, puzzleSize).
+                map(col -> puzzle[row][col]));
     }
 
     private Set<Integer> knownNumbersInCol(int[][] puzzle, int col) {
-        return IntStream.range(0, puzzleSize).
-                map(row -> puzzle[row][col]).
-                filter(n -> n != 0).
-                boxed().collect(toSet());
+        return knownNumbers(
+                IntStream.range(0, puzzleSize).
+                map(row -> puzzle[row][col]));
     }
 
     Set<Integer> knownNumbersInSubSquare(int[][] puzzle, int row, int col) {
@@ -68,9 +66,14 @@ public class Sudoku {
         int fromCol = fromSubSquareIndex(col, subSquareSize);
         int toCol = toSubSquareIndex(subSquareSize, fromCol);
 
-        return IntStream.range(fromRow, toRow).
+        return knownNumbers(
+                IntStream.range(fromRow, toRow).
                 flatMap(r -> IntStream.range(fromCol, toCol).
-                        map(c -> puzzle[r][c])).
+                        map(c -> puzzle[r][c])));
+    }
+
+    private Set<Integer> knownNumbers(IntStream numbers) {
+        return numbers.
                 filter(n -> n != 0).
                 boxed().
                 collect(toSet());
