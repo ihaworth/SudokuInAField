@@ -64,7 +64,8 @@ public class Sudoku {
 
         return IntStream.range(fromRow, toRow).
                 flatMap(r -> IntStream.range(fromCol, toCol).
-                        map(c -> puzzle[r][c])).boxed().collect(toSet());
+                        map(c -> puzzle[r][c])).
+                boxed().collect(toSet());
     }
 
     Set<Integer> knownNumbers(Set<Integer> numbers) {
