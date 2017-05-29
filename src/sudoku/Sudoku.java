@@ -33,13 +33,13 @@ public class Sudoku {
 
     private Set<Integer> knownIntersectingNumbers(int[][] puzzle, int row, int col) {
 
-        Set<Integer> knownIntersectingNumbers = new HashSet<>();
+        Set<Integer> intersectingNumbers = new HashSet<>();
 
-        knownIntersectingNumbers.addAll(knownNumbers(numbersInRow(puzzle, row)));
-        knownIntersectingNumbers.addAll(knownNumbers(numbersInCol(puzzle, col)));
-        knownIntersectingNumbers.addAll(knownNumbers(numbersInSubSquare(puzzle, row, col)));
+        intersectingNumbers.addAll(numbersInRow(puzzle, row));
+        intersectingNumbers.addAll(numbersInCol(puzzle, col));
+        intersectingNumbers.addAll(numbersInSubSquare(puzzle, row, col));
 
-        return knownIntersectingNumbers;
+        return knownNumbers(intersectingNumbers);
     }
 
     private Set<Integer> numbersInRow(int[][] puzzle, int row) {
