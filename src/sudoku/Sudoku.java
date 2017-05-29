@@ -19,7 +19,7 @@ public class Sudoku {
 
                 if (puzzle[row][col] == 0) {
                     Set<Integer> possibleNumbers = allPossibleNumbers();
-                    possibleNumbers.removeAll(known(intersectingNumbers(puzzle, row, col)));
+                    possibleNumbers.removeAll(intersectingNumbers(puzzle, row, col));
                     if (possibleNumbers.size() == 1) {
                         puzzle[row][col] = first(possibleNumbers);
                         return solve(puzzle);
@@ -65,12 +65,6 @@ public class Sudoku {
                 flatMap(r -> IntStream.range(fromCol, toCol).
                         map(c -> puzzle[r][c])).
                 boxed().collect(toSet());
-    }
-
-    Set<Integer> known(Set<Integer> numbers) {
-        return numbers.stream().
-                filter(n -> n != 0).
-                collect(toSet());
     }
 
     private int fromSubSquareIndex(int col, int subSquareSize) {
