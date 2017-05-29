@@ -35,30 +35,22 @@ public class Sudoku {
 
         Set<Integer> knownIntersectingNumbers = new HashSet<>();
 
-        knownIntersectingNumbers.addAll(knownNumbersInRow(puzzle, row));
-        knownIntersectingNumbers.addAll(knownNumbersInCol(puzzle, col));
-        knownIntersectingNumbers.addAll(knownNumbersInSubSquare(puzzle, row, col));
+        knownIntersectingNumbers.addAll(knownNumbers(numbersInRow(puzzle, row)));
+        knownIntersectingNumbers.addAll(knownNumbers(numbersInCol(puzzle, col)));
+        knownIntersectingNumbers.addAll(knownNumbers(numbersInSubSquare(puzzle, row, col)));
 
         return knownIntersectingNumbers;
-    }
-
-    private Set<Integer> knownNumbersInRow(int[][] puzzle, int row) {
-        return knownNumbers(numbersInRow(puzzle, row));
     }
 
     private Set<Integer> numbersInRow(int[][] puzzle, int row) {
         return IntStream.range(0, puzzleSize).map(col -> puzzle[row][col]).boxed().collect(toSet());
     }
 
-    private Set<Integer> knownNumbersInCol(int[][] puzzle, int col) {
-        return knownNumbers(numbersInCol(puzzle, col));
-    }
-
     private Set<Integer> numbersInCol(int[][] puzzle, int col) {
         return IntStream.range(0, puzzleSize).map(row -> puzzle[row][col]).boxed().collect(toSet());
     }
 
-    Set<Integer> knownNumbersInSubSquare(int[][] puzzle, int row, int col) {
+    Set<Integer> numbersInSubSquare(int[][] puzzle, int row, int col) {
         if (puzzle.length == 2 || puzzle.length == 3)
             return new HashSet<>();
 
@@ -70,13 +62,12 @@ public class Sudoku {
         int fromCol = fromSubSquareIndex(col, subSquareSize);
         int toCol = toSubSquareIndex(subSquareSize, fromCol);
 
-        return knownNumbers(
-                IntStream.range(fromRow, toRow).
+        return IntStream.range(fromRow, toRow).
                 flatMap(r -> IntStream.range(fromCol, toCol).
-                        map(c -> puzzle[r][c])).boxed().collect(toSet()));
+                        map(c -> puzzle[r][c])).boxed().collect(toSet());
     }
 
-    private Set<Integer> knownNumbers(Set<Integer> numbers) {
+    Set<Integer> knownNumbers(Set<Integer> numbers) {
         return numbers.stream().
                 filter(n -> n != 0).
                 collect(toSet());
