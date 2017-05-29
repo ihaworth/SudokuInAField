@@ -5,10 +5,7 @@ import org.junit.jupiter.api.TestFactory;
 
 import java.util.List;
 
-import static java.lang.Integer.parseInt;
 import static java.util.Arrays.asList;
-import static matchers.GridMatcher.gridMatches;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class Sudoku2By2Test extends SudokuTest {

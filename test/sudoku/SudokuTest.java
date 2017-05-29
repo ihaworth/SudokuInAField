@@ -3,10 +3,9 @@ package sudoku;
 import java.util.List;
 import java.util.function.IntPredicate;
 
-import static java.lang.Integer.parseInt;
 import static java.util.Arrays.stream;
-import static java.util.stream.Collectors.*;
-import static java.util.stream.IntStream.*;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.IntStream.range;
 import static matchers.GridMatcher.gridMatches;
 import static org.hamcrest.MatcherAssert.assertThat;
 
