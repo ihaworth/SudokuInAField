@@ -19,7 +19,7 @@ public class Sudoku {
 
                 if (puzzle[row][col] == 0) {
                     Set<Integer> possibleNumbers = allPossibleNumbers();
-                    possibleNumbers.removeAll(knownIntersectingNumbers(puzzle, row, col));
+                    possibleNumbers.removeAll(known(intersectingNumbers(puzzle, row, col)));
                     if (possibleNumbers.size() == 1) {
                         puzzle[row][col] = first(possibleNumbers);
                         return solve(puzzle);
@@ -31,15 +31,14 @@ public class Sudoku {
         return puzzle;
     }
 
-    private Set<Integer> knownIntersectingNumbers(int[][] puzzle, int row, int col) {
-
+    private Set<Integer> intersectingNumbers(int[][] puzzle, int row, int col) {
         Set<Integer> intersectingNumbers = new HashSet<>();
 
         intersectingNumbers.addAll(numbersInRow(puzzle, row));
         intersectingNumbers.addAll(numbersInCol(puzzle, col));
         intersectingNumbers.addAll(numbersInSubSquare(puzzle, row, col));
 
-        return knownNumbers(intersectingNumbers);
+        return intersectingNumbers;
     }
 
     private Set<Integer> numbersInRow(int[][] puzzle, int row) {
@@ -68,7 +67,7 @@ public class Sudoku {
                 boxed().collect(toSet());
     }
 
-    Set<Integer> knownNumbers(Set<Integer> numbers) {
+    Set<Integer> known(Set<Integer> numbers) {
         return numbers.stream().
                 filter(n -> n != 0).
                 collect(toSet());
